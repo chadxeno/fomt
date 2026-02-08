@@ -70,6 +70,7 @@ SECTIONS
         asm/scene.o(.text);
         asm/intro_scene.o(.text);
         asm/new_game.o(.text);
+        src/hardware.o(.text);
         asm/hardware.o(.text);
         src/farm.o(.text);
         src/field.o(.text);
@@ -83,8 +84,10 @@ SECTIONS
         src/coop.o(.text);
         src/barn.o(.text);
         src/item.o(.text);
-        asm/code_0800E2E4.o(.text);
+        src/code_0800E2E4.o(.text);
+        src/farmer.o(.text);
         src/rucksack_item.o(.text);
+        src/held_item.o(.text);
         src/rucksack.o(.text);
         asm/more_items.o(.text);
         asm/game_scene.o(.text);
@@ -111,6 +114,7 @@ SECTIONS
         src/chicken.o(.text);
         src/cow.o(.text);
         src/sheep.o(.text);
+        src/code_actor_0809BFE8.o(.text);
         asm/code_actor_0809BFE8.o(.text);
         src/npc.o(.text);
         src/bachelorette.o(.text);
@@ -159,7 +163,10 @@ SECTIONS
         src/shipping_bin.o(.rodata);
         src/record_player.o(.rodata);
         . = ALIGN(4); src/item.o(.rodata);
+        /* . = ALIGN(4); src/code_0800E2E4.o(.rodata); */
         . = ALIGN(4); asm/data/data_080F0348.o(.rodata);
+        . = ALIGN(4); src/data_schedules.o(.rodata);
+        . = ALIGN(4); asm/data/data_080F1A80.o(.rodata);
         . = ALIGN(4); src/script_engine.o(.rodata);
         . = ALIGN(4); asm/data/data_080F9EB8.o(.rodata);
         . = ALIGN(4); src/sound_data.o(.rodata.*);

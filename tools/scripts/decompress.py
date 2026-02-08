@@ -70,7 +70,8 @@ def decode_huffman_tree(read: ReadBits, bits: int) -> list[int] | None:
         # print(f"count = {count}, num_bits_path = {num_bits_path}")
 
         if count > 2**num_bits_path:
-            return None
+            # why does this condition not need to be true?
+            pass
 
         total_count = total_count + count
 
@@ -270,8 +271,8 @@ def lzss0(read: ReadRaw, stream: LZSSStream) -> bool:
                 stream.put_literal(read.read_byte())
 
         elif method == 3:
-            size = 1 + read.read_bits(6)
-            byte = read.read_byte()
+            size = 2 + read.read_bits(6)
+            byte = read.read_bits(8)
             stream.put_run_length(byte, size)
 
         else:
@@ -575,7 +576,7 @@ def main(args):
     except IndexError:
         return f"Usage: [python 3] {args[0]} ROM OFFSET OUTPUT"
 
-    rom_addr = int(args[2], base=0)
+    rom_addr = int(rom_addr, base=0)
 
     with open(rom_path, "rb") as f:
         data = f.read()

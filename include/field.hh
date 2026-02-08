@@ -47,7 +47,7 @@ struct FieldPlot
     bool method_0800A78C() const;
 
     // NOTE: unsure if this is actually weather
-    void DayUpdate(int weather, Date const & date);
+    void DayUpdate(int weather, GameDate const & date);
     void method_0800AB08(Season season);
     void const * method_0800AF20() const;
     Unk_Something const * method_0800AF5C(FieldPlot const * arg_1, FieldPlot const * arg_2) const;
@@ -138,7 +138,7 @@ struct Field
         return 0x23;
     }
 
-    void DayUpdate(int weather, Date const & date)
+    void DayUpdate(int weather, GameDate const & date)
     {
         for (FieldPlot * it = plots; it < plots + Width * Height; it++)
         {

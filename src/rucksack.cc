@@ -10,15 +10,15 @@ u32 Rucksack::GetUpgradeLevel() const
     u32 size = items.size();
 
     if (size < 2)
-        return 0;
+        return LEVEL_0;
 
     if (size < 4)
-        return 0;
+        return LEVEL_0;
 
     if (size < 8)
-        return 1;
+        return LEVEL_1;
 
-    return 2;
+    return LEVEL_2;
 }
 
 u32 Rucksack::GetSize() const

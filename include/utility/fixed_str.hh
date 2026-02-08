@@ -26,11 +26,13 @@ struct FixedStr
     {
         u32 len = min_inl<u32>(strlen(cstr), MaxLen);
         memcpy(m_data, cstr, len);
-        m_data[len] = '\0';
+        (*this)[len] = '\0';
         return *this;
     }
 
     bool IsEmpty() const { return m_data[0] == '\0'; }
+
+    char & operator[](unsigned int idx) { return m_data[idx]; }
 
     operator char const *() const { return m_data; }
 

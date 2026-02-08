@@ -16,15 +16,15 @@ func_0801004C: @ 0x0801004C
     adds r0, r5, r2
     ldrb r0, [r0]
     cmp r0, #0
-    beq _08010070
+    beq .L08010070
     add r4, sp, #8
     str r1, [sp, #8]
-    b _08010076
-_08010070:
+    b .L08010076
+.L08010070:
     add r4, sp, #8
     movs r0, #1
     str r0, [sp, #8]
-_08010076:
+.L08010076:
     movs r0, #8
     bl __builtin_new
     ldr r1, [r5, #4]
@@ -34,15 +34,15 @@ _08010076:
     ldr r1, [sp, #4]
     adds r6, r4, #0
     cmp r5, r1
-    beq _0801009E
+    beq .L0801009E
     cmp r1, #0
-    beq _0801009E
+    beq .L0801009E
     ldr r0, [r1]
     ldr r2, [r0, #8]
     adds r0, r1, #0
     movs r1, #3
     bl _call_via_r2
-_0801009E:
+.L0801009E:
     str r5, [sp, #4]
     ldr r0, [sp, #4]
     movs r4, #0
@@ -58,22 +58,22 @@ _0801009E:
     str r4, [r7]
     ldr r1, [sp, #8]
     cmp r1, #0
-    beq _080100CC
+    beq .L080100CC
     ldr r0, [r1]
     ldr r2, [r0, #8]
     adds r0, r1, #0
     movs r1, #3
     bl _call_via_r2
-_080100CC:
+.L080100CC:
     ldr r1, [sp, #4]
     cmp r1, #0
-    beq _080100DE
+    beq .L080100DE
     ldr r0, [r1]
     ldr r2, [r0, #8]
     adds r0, r1, #0
     movs r1, #3
     bl _call_via_r2
-_080100DE:
+.L080100DE:
     mov r0, sp
     movs r1, #2
     bl func_08008A68
@@ -82,7 +82,7 @@ _080100DE:
     pop {r4, r5, r6, r7}
     pop {r1}
     bx r1
-_080100F0:
+.L080100F0:
     .byte 0x02, 0x48, 0x00, 0x68, 0x02, 0x49, 0x40, 0x18, 0x70, 0x47, 0x00, 0x00, 0x0C, 0x04, 0x00, 0x03
     .byte 0x24, 0x05, 0x00, 0x00, 0x02, 0x48, 0x00, 0x68, 0x02, 0x49, 0x40, 0x18, 0x70, 0x47, 0x00, 0x00
     .byte 0x0C, 0x04, 0x00, 0x03, 0xDC, 0x04, 0x00, 0x00, 0x02, 0x48, 0x00, 0x68, 0xDE, 0x21, 0x89, 0x00
@@ -96,9 +96,9 @@ func_08010158: @ 0x08010158
     push {r4, r5, lr}
     adds r4, r0, #0
     adds r5, r1, #0
-    ldr r0, _08010198 @ =vtable_unk_080E5BF8
+    ldr r0, .L08010198 @ =vtable_unk_080E5BF8
     str r0, [r4]
-    ldr r1, _0801019C @ =gUnk_0300040C
+    ldr r1, .L0801019C @ =gUnk_0300040C
     movs r0, #0
     str r0, [r1]
     movs r1, #0xde
@@ -112,10 +112,10 @@ func_08010158: @ 0x08010158
     bl _._13AScriptEngine
     ldr r0, [r4, #4]
     cmp r0, #0
-    beq _0801018A
+    beq .L0801018A
     movs r1, #3
     bl func_080D4480
-_0801018A:
+.L0801018A:
     adds r0, r4, #0
     adds r1, r5, #0
     bl func_080007EC
@@ -123,9 +123,9 @@ _0801018A:
     pop {r0}
     bx r0
     .align 2, 0
-_08010198: .4byte vtable_unk_080E5BF8
-_0801019C: .4byte gUnk_0300040C
-_080101A0:
+.L08010198: .4byte vtable_unk_080E5BF8
+.L0801019C: .4byte gUnk_0300040C
+.L080101A0:
     .byte 0xF0, 0xB5, 0x47, 0x46, 0x80, 0xB4, 0x06, 0x1C, 0x88, 0x46, 0x2A, 0x48, 0x30, 0x60, 0x09, 0x68
     .byte 0x00, 0x24, 0x40, 0x46, 0x04, 0x60, 0x71, 0x60, 0x30, 0x1C, 0x08, 0x30, 0x2F, 0xF0, 0x22, 0xFB
     .byte 0xD9, 0x21, 0x89, 0x00, 0x70, 0x18, 0x04, 0x70, 0xDB, 0x20, 0x80, 0x00, 0x31, 0x18, 0x0C, 0x70

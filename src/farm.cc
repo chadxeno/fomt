@@ -102,7 +102,7 @@ void Farm::method_08009C60()
     unk_0010_11 = 0;
 }
 
-void Farm::DayUpdate(int weather, Date const & date)
+void Farm::DayUpdate(int weather, GameDate const & date)
 {
     unk_0010_11 = true;
 

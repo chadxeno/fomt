@@ -45,20 +45,28 @@ struct Box
     Box Moved(i32 x, i32 y) const { return Box(x1, y1, x2, y2, x, y); }
 };
 
+struct TerrainInfo
+{
+    // bit 0 is 1 if this is a solid tile
+    // somewhere between bit 1 and 17 is some warp info
+    // bits 17 onward (unknown end) are a interaction script ID
+    STRUCT_PAD(0x00, 0x04);
+};
+
 // NOTE: this is not used yet in code, but I'm pretty sure that's correct
 struct MapData
 {
     /* +00 */ void const * packed_img;
-    /* +04 */ void const * packed_pal;
-    /* +08 */ void const * packed_unk_08;
-    /* +0C */ void const * packed_unk_0C;
-    /* +10 */ void const * packed_unk_10;
-    /* +14 */ void const * packed_unk_14;
-    /* +18 */ void const * terrain_info;
-    /* +1C */ void const * terrain_map;
+    /* +04 */ void const * packed_pal1;
+    /* +08 */ void const * packed_pal2;
+    /* +0C */ void const * packed_tiles1;
+    /* +10 */ void const * packed_tiles2;
+    /* +14 */ void const * packed_tiles3;
+    /* +18 */ TerrainInfo const * terrain_info;
+    /* +1C */ u8 const * terrain_map;
     /* +20 */ u16 width;
     /* +22 */ u16 height;
-    /* +24 */ bool unk_24;
+    /* +24 */ bool is_interior;
 };
 
 // TODO: rename
@@ -159,9 +167,23 @@ enum Season
     SEASON_WINTER,
 };
 
-struct PACKED Date
+#define NUM_SEASONS 4u
+
+struct PACKED GameDate
 {
-    Season season : 2;
+    /* bit 0 */ Season season : 2;
+    /* bit 2 */ u8 day : 5;
+
+    Season GetSeason() const { return season; }
+    unsigned int GetDay() const { return day; }
+};
+
+struct PACKED ALIGN(2) GameTime
+{
+    /* bit 0 */ u16 clock_hour : 5;
+    /* bit 5 */ u16 clock_minute : 6;
+
+    unsigned int GetHour() const { return clock_hour; }
 };
 
 #endif // UNKNOWN_TYPES_HH

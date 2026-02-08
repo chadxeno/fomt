@@ -588,7 +588,7 @@ bool FieldPlot::method_0800A78C() const
     return false;
 }
 
-void FieldPlot::DayUpdate(int weather, Date const & date)
+void FieldPlot::DayUpdate(int weather, GameDate const & date)
 {
     if (GetUnk8() == 1)
     {

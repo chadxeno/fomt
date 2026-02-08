@@ -40,7 +40,7 @@ struct Farm
     Horse * GetHorse();
     void RemoveHorse();
     void method_08009C60();
-    void DayUpdate(int weather, Date const & date);
+    void DayUpdate(int weather, GameDate const & date);
     void method_08009F80();
 
     /* +0000 */ FixedStr<12> name;

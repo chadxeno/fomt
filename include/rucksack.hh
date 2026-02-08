@@ -8,6 +8,13 @@
 
 struct Rucksack
 {
+    enum
+    {
+        LEVEL_0,
+        LEVEL_1,
+        LEVEL_2,
+    };
+
     Rucksack();
 
     u32 GetUpgradeLevel() const;

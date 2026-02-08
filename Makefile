@@ -51,7 +51,7 @@ OLD_CC1  := tools/agbcc/bin/old_agbcc$(EXE)
 
 INCFLAGS     := $(foreach dir, $(INCLUDE_DIRS), -I "$(dir)")
 
-CPPFLAGS := $(INCFLAGS) -iquote . -iquote include -Wno-trigraphs
+CPPFLAGS := $(INCFLAGS) -iquote . -iquote include -Wno-trigraphs -fno-exceptions
 CFLAGS   := -g -mthumb-interwork -Wimplicit -Wparentheses -Werror -O2 -fhex-asm
 CXXFLAGS := -quiet -fno-exceptions -fno-rtti -fvtable-thunks $(CFLAGS)
 ASFLAGS  := $(INCFLAGS) -I . -I include -mcpu=arm7tdmi
